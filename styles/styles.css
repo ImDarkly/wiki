@@ -3,30 +3,65 @@
     --white: #FFFFFF;
     --white-90: #E6E6E6;
     --main-red: #B98686;
+    --black: #191919;
+    --placeholder-color: #757575;
+    --white-50: #808080;
 }
-button{
-  outline: none !important;            
-  border: none;
+::selection{
+  background-color: var(--main-color);
+  color: var(--white);
 }
 body {
     margin: 0;
-    background-color: var(--main-color);
+    padding: 0;
+    background-color: var(--white);
+}
+button{
+  outline: transparent !important;            
+  border: none;
+  padding: 0;
+}
+input{
+  border: none;
+  outline: transparent;
+  font-size: 16px;
+  color: var(--black);
+  transition: all 100ms ease-in-out;
+}
+input[type="text"]{
+  border-radius: 42px;
+  height: 36px;
+  width: 100%;
+  padding: 8px 16px 8px 48px;
+}
+input[type="text"]:focus{
+  outline: 2px solid var(--main-color);
+}
+input::placeholder{
+  color: var(--placeholder-color);
+}
+input[type="text"]:focus::placeholder{
+  color: var(--black);
 }
 .main{
     display: flex;
     flex-direction: column;
 }
 .topBar {
+    display: flex;
+    flex-direction: row;
     background-color: var(--white);
     border-radius: 0 0 25px 25px;
     width: 100vw;
     height: 90px;
     position: fixed;
+    z-index: 2;
 }
 .middleBar {
-    background-color: var(--main-color);
+    display: flex;
+    background-color: var(--white);
     width: 100vw;
-    height: 200vh;
+    z-index: 1;
 }
 .bottomBar{
     position: fixed;
@@ -34,6 +69,7 @@ body {
     width: 100vw;
     height: 128px;
     bottom: 0;
+    z-index: 2;
 }
 .navBar{
   display: flex;
@@ -63,6 +99,7 @@ body {
   border-radius: 50%;
   padding: 0;
   transition: all 200ms cubic-bezier(0.45, 1.45, 0.8, 1);
+  z-index: 3;
 }
 .plus-button{
   margin: auto;
@@ -86,12 +123,87 @@ body {
 .buttonBG .active{
   background-color: var(--main-red);
   border-radius: 12px;
-  width: 42px;
-  height: 42px;
+  transform: scale(0.8);
 }
 .buttonBG .active span:nth-child(1){
-  transform: rotate(225deg);
+  transform: rotate(-225deg);
 } 
 .buttonBG .active span:nth-child(2){
-  transform: rotate(135deg);
+  transform: rotate(-135deg);
+}
+.appLogo{
+  background-image: url(LetterLogo.svg);
+  width: 108.5px;
+  height: 42px;
+  margin: 32px 16px 32px 32px;
+}
+.searchBar{
+  margin: 32px 32px 32px 16px;
+  color: var(--placeholder-color);
+  transition: all 100ms ease-in-out;
+}
+.searchBar input{
+  background-color: var(--white-90);
+}
+.searchBar i{
+  position: absolute;
+  margin: 10px 0px 10px 16px;
+}
+.searchBar:focus-within {
+  color: var(--black);
+}
+.house-button, .random-button{
+  display: flex;
+  height: 48px;
+  width: 48px;
+  transition: all 200ms ease-in-out;
+  border-radius: 8px;
+}
+.house-button{
+  margin: auto auto auto 28px;
+}
+.random-button{
+  margin: auto 28px auto auto;
+}
+.house-button button, .random-button button{
+  background: transparent;
+  margin: auto;
+  width: 48px;
+  height: 48px;
+  font-size: 32px;
+}
+.house-button:active, .random-button:active{
+  background-color: rgba(134, 185, 140, 0.5);
+}
+.nav-button{
+  display: flex;
+}
+.house-button i, .random-button i{
+  margin: auto;
+  color: var(--white-50);
+}
+.house-button .active i, .random-button .active i{
+  color: var(--main-color);
+  animation: scale-up 200ms cubic-bezier(0.45, 1.45, 0.8, 1);
+}
+
+@keyframes scale-up {
+  0% {
+      opacity: 0;
+      transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.7);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.middleBar p{
+  margin: 360px auto;
+  font-size: 72px;
+  font-weight: 900;
 }
