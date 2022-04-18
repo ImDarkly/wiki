@@ -1,26 +1,23 @@
-{% load static %}
-
 <!DOCTYPE html>
 
 <html lang="en">
     <head>
         <title>Encyclopedia</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link href="{% static 'encyclopedia/styles.css' %}" rel="stylesheet">
+        <link href="styles/styles.css" rel="stylesheet">
         <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
         <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
         <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="{% static 'encyclopedia/script.js' %}"></script>
-        <link rel="icon" type="image/x-icon" href="{% static 'encyclopedia/favicon.ico' %}">
+        <script src="scripts/script.js"></script>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
         <meta name="mobile-web-app-capable" content="yes">
         <script src="https://unpkg.com/phosphor-icons"></script>
     </head>
     <body>
         <div id="app"></div>
-        {% load static %}
-        <script type="text/babel" src="{% static 'encyclopedia/app.js' %}"></script>
+        <script type="text/babel" src="scripts/app.js"></script>
 
     </body>
 </html>
