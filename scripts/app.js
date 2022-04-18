@@ -1,7 +1,8 @@
+
 function Navbar() {
 
     const [isPlusActive, setPlusActive] = React.useState("false");
-    const openForm = () => {
+    const toggleForm = () => {
         setPlusActive(!isPlusActive);
         };
 
@@ -16,6 +17,35 @@ function Navbar() {
         setRandomActive(!isRandomActive);
         setHouseActive(!isHouseActive);
         };
+    
+    function Modal() {
+        return (
+            <div className="modal-bg">
+                <div className="modal">
+                    <div className="modal-top">
+                        <p>Create page</p>
+                        <button className="modal-close" onClick={toggleForm}>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                    <div className="modal-middle">
+                        <form id="create">
+                            <div className="name">
+                                <i class="ph-pencil-simple-bold"></i>
+                                <input type="text" placeholder="Page name"></input>
+                            </div>
+                            <div className="text">
+                                <i class="ph-pencil-simple-bold"></i>
+                                <textarea form="create" placeholder="Some text"></textarea>
+                            </div>
+                            <input type="submit" value="Create"></input>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="main">
@@ -29,8 +59,6 @@ function Navbar() {
                 </div>
             </div>
             <div className="middleBar">
-                {isHouseActive ? <p>Home</p> : null}
-                {isRandomActive ? null : <p>Random</p>}
             </div>
             <div className="bottomBar">
                 <div className="navBar">
@@ -40,7 +68,7 @@ function Navbar() {
                         </button>
                     </div>
                     <div className="buttonBG">
-                        <button onClick={openForm} className={isPlusActive ? "main-button" : "main-button active"}>
+                        <button onClick={toggleForm} {...isPlusActive ? window.history.pushState("object or string", "Title", "/") : window.history.pushState("object or string", "Title", "/create")} className={isPlusActive ? "main-button" : "main-button active"}>
                             <div className="plus-button">
                                 <span></span>
                                 <span></span>
@@ -54,6 +82,8 @@ function Navbar() {
                     </div>
                 </div>
             </div>
+
+            <Modal /> //{isPlusActive ? "" : <Modal />}
         </div>
     )
 }
@@ -62,7 +92,5 @@ function App() {
         <Navbar />
     );
 }
-
-
 
 ReactDOM.render(<App />, document.querySelector("#app"));
