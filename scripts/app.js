@@ -68,7 +68,7 @@ function Navbar() {
                         </button>
                     </div>
                     <div className="buttonBG">
-                        <button onClick={toggleForm} {...isPlusActive ? window.history.pushState("object or string", "Title", "/") : window.history.pushState("object or string", "Title", "/create")} className={isPlusActive ? "main-button" : "main-button active"}>
+                        <button onClick={toggleForm} {...isPlusActive ? window.history.pushState("object or string", "Title", "/wiki") : window.history.pushState("object or string", "Title", "/wiki")} className={isPlusActive ? "main-button" : "main-button active"}>
                             <div className="plus-button">
                                 <span></span>
                                 <span></span>
