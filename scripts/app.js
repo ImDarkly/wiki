@@ -83,7 +83,7 @@ function Navbar() {
                 </div>
             </div>
 
-            <Modal /> //{isPlusActive ? "" : <Modal />}
+            {isPlusActive ? "" : <Modal />}
         </div>
     )
 }
