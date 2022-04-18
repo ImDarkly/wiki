@@ -21,20 +21,20 @@ button{
   border: none;
   padding: 0;
 }
-input{
+textarea, input{
   border: none;
   outline: transparent;
   font-size: 16px;
   color: var(--black);
   transition: all 100ms ease-in-out;
 }
-input[type="text"]{
+textarea, input[type="text"]{
   border-radius: 42px;
   height: 36px;
   width: 100%;
   padding: 8px 16px 8px 48px;
 }
-input[type="text"]:focus{
+textarea:focus, input[type="text"]:focus{
   outline: 2px solid var(--main-color);
 }
 input::placeholder{
@@ -43,7 +43,10 @@ input::placeholder{
 input[type="text"]:focus::placeholder{
   color: var(--black);
 }
-.main{
+textarea{
+  overflow: hidden;
+}
+.mainbar{
     display: flex;
     flex-direction: column;
 }
@@ -61,7 +64,7 @@ input[type="text"]:focus::placeholder{
     display: flex;
     background-color: var(--white);
     width: 100vw;
-    z-index: 1;
+    z-index: 4;
 }
 .bottomBar{
     position: fixed;
@@ -69,7 +72,6 @@ input[type="text"]:focus::placeholder{
     width: 100vw;
     height: 128px;
     bottom: 0;
-    z-index: 2;
 }
 .navBar{
   display: flex;
@@ -79,6 +81,7 @@ input[type="text"]:focus::placeholder{
   height: 64px;
   background-color: var(--white-90);
   border-radius: 12px;
+  z-index: 2;
 }
 .buttonBG{
   align-self: center;
@@ -93,13 +96,14 @@ input[type="text"]:focus::placeholder{
 .main-button{
   margin: auto;
   display: flex;
+  position: relative;
   height: 48px;
   width: 48px;
   background-color: var(--main-color);
   border-radius: 50%;
   padding: 0;
   transition: all 200ms cubic-bezier(0.45, 1.45, 0.8, 1);
-  z-index: 3;
+  z-index: 5;
 }
 .plus-button{
   margin: auto;
@@ -202,8 +206,118 @@ input[type="text"]:focus::placeholder{
   }
 }
 
-.middleBar p{
-  margin: 360px auto;
-  font-size: 72px;
-  font-weight: 900;
+.modal-bg{
+  display: flex;
+  position: absolute;
+  z-index: 3;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(25, 25, 25, 0.5);
+  animation: fade-in 100ms ease-in-out;
+}
+.modal{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 320px;
+  height: 480px;
+  position: relative; 
+  background-color: var(--white-90);
+  border-radius: 12px;
+  animation: jump-in 300ms cubic-bezier(0.45, 1.45, 0.8, 1);
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes jump-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+.modal-top{
+  display: flex;
+  position: relative;
+  margin: 16px 16px 0 16px;
+  flex-direction: row;
+  height: 32px;
+}
+.modal-top p{
+  font-weight: bolder;
+  font-size: 24px;
+  width: 100%;
+}
+.modal-top button{
+  display: flex;
+  width: 36px;
+  background-color: transparent;
+  border-radius: 8px;
+}
+.modal-top span{
+  position: absolute;
+  margin-left: 8px;
+  margin-top: 15px;
+  width: 16px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: var(--black);
+}
+.modal-top span:nth-child(1){
+  transform: rotate(45deg);
+}
+.modal-top span:nth-child(2){
+  transform: rotate(135deg);
+}
+.modal-middle{
+  display: flex;
+  flex-direction: column;
+  margin: 16px;
+  height: 100%;
+}
+.modal-middle form{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.modal-middle .text{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.modal-middle textarea{
+  margin: 16px 0 16px 0;
+  text-align: left;
+  border-radius: 20px;
+  height: 100%;
+}
+.modal-middle input[type="submit"]{
+  background-color: var(--main-color);
+  border-radius: 12px;
+  padding: 12px 64px;
+  margin: auto;
+  color: var(--white);
+}
+.modal-middle i{
+  z-index: 6;
+  position: absolute;
+  color: var(--placeholder-color);
+  margin: 10px 0px 10px 16px;
+}
+.name:focus-within i, .text:focus-within i{
+  color: var(--black);
+}
+.modal-middle .text i{
+  margin: 26px 0px 10px 16px;
 }
