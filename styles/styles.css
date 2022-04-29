@@ -146,6 +146,7 @@ textarea{
   color: var(--placeholder-color);
   transition: all 100ms ease-in-out;
   float: right;
+  self-align: flex-end;
 }
 .searchBar input{
   background-color: var(--white-90);
